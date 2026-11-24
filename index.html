@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#12345d">
+<title>هيكل الرياضيات</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">📘 هيكل الرياضيات</div>
+  <button class="top" onclick="showResults()">النتائج</button>
+</header>
+
+<main>
+<section id="home">
+  <div class="hero">
+    <span class="verified">
+      <span class="check">✓</span>
+      نسخة مراجعة مرتبطة بالملزمة الأصلية
+    </span>
+    <h1>هيكل الرياضيات</h1>
+    <p>مراجعة الصف السادس العام — الفصل الدراسي الأول. كل بند تدريبي يظهر لوحده كما ورد في ملف الملزمة.</p>
+    <div class="credit">
+      تم إنشاؤه بواسطة معلمي الرياضيات – مدرسة البريرات – الحلقة الثانية بنين
+    </div>
+    <div class="hint">
+      تنبيه: علامة التحقق هنا تعني مطابقة محتوى الأسئلة للملزمة المرفقة، وليست اعتمادًا رسميًا من المدرسة أو جهة توثيق.
+    </div>
+  </div>
+
+  <h2 class="section">اختر المراجعة</h2>
+  <div class="cards" id="reviewCards"></div>
+
+  <div class="notice">
+    طريقة الاستخدام: اقرأ السؤال المكتوب، واضغط الصورة الصغيرة لتكبيرها عند الحاجة، ثم اختر 1 أو 2 أو 3 أو 4 وانتقل للسؤال التالي. لا يوجد تصحيح صح أو خطأ.
+  </div>
+
+  <div style="margin-top:14px">
+    <a href="ملزمة_الرياضيات.pdf" target="_blank">
+      📄 فتح الملزمة الأصلية كاملة (PDF)
+    </a>
+  </div>
+</section>
+
+<section id="quiz" class="hidden">
+  <div class="panel">
+    <div class="row">
+      <b id="reviewName"></b>
+      <span class="muted" id="counter"></span>
+    </div>
+
+    <div class="progress">
+      <div class="bar" id="bar"></div>
+    </div>
+
+    <div class="row">
+      <span class="qid" id="qid"></span>
+      <span class="muted" id="page"></span>
+    </div>
+
+    <div class="question-head">
+      <div class="question-copy" id="questionText"></div>
+      <div class="thumb-wrap">
+        <img id="qimg" class="thumb" alt="صورة السؤال" onclick="zoomImage()">
+        <div class="thumb-caption">اضغط لتكبير الصورة</div>
+      </div>
+    </div>
+
+    <div class="marktitle" id="answerTitle">اختر الإجابة</div>
+    <div class="answer-list" id="answerList"></div>
+
+    <div id="writtenWrap" class="hidden">
+      <textarea id="writtenAnswer" placeholder="اكتب إجابتك هنا..." rows="3"></textarea>
+    </div>
+
+    <div class="actions">
+      <button class="btn soft" onclick="toHome()">الرئيسية</button>
+      <button class="btn" id="next" onclick="nextQ()" disabled>التالي</button>
+    </div>
+  </div>
+</section>
+
+<section id="results" class="hidden">
+  <div class="panel">
+    <h2 style="margin-top:0">نتائج المراجعات 📊</h2>
+    <div id="rows"></div>
+    <div class="notice">
+      تعرض النتائج عدد الأسئلة التي اخترت لها إجابة فقط، ولا تحكم على الإجابات بأنها صحيحة أو خاطئة. يمكنك إعادة أي مراجعة في أي وقت.
+    </div>
+    <button class="btn" style="margin-top:15px" onclick="toHome()">الصفحة الرئيسية</button>
+  </div>
+</section>
+</main>
+
+<div class="zoom" id="zoom" onclick="closeZoom()">
+  <button aria-label="إغلاق">×</button>
+  <img id="zoomImg" alt="صورة السؤال المكبرة" onclick="event.stopPropagation()">
+</div>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
